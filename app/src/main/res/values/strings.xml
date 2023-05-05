@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Ap_DVD</string>
+    <string name="txtBtnJunior">Juniors</string>
+    <string name="txtBtnBenjamins">Benjamins</string>
+    <string name="txtListeBenjamins">Liste des Joueurs de la categorie Benjamins</string>
+    <string name="txtBtnRetourBenj"> retour </string>
+    <string name="txtListeJuniors">Liste des Joueurs de la categorie Junior</string>
+    <string name="txtBtnRetourJuniors"> retour </string>
+    <string name="txtListeU21">Liste des Joueurs de la categorie U21</string>
+    <string name="txtBtnRetourU21"> retour </string>
+    <string name="txtListeSeniors">Liste des Joueurs de la categorie Senior</string>
+    <string name="txtBtnRetourSenior"> retour </string>
+    <string name="txtBtnU21">U21</string>
+    <string name="txtBtnSeniors">Seniors</string>
+    <string name="txtMenuRecherche">Rechercher un film</string>
+    <string name="txtMenuReserver">Rechercher une reservation</string>
+    <string name="txtMenuMagasin">Rechercher un magasin</string>
+    <string name="txtMenuPresentation">Rechercher une presentation</string>
+    <string name="txtReservation">Reservation</string>
+    <string name="txtbtnConfirmer">Confirmer</string>
+    <string name="txtBtnAnnuler">Annuler</string>
+    <string name="txtBtnRetourRes">Retour</string>
+    <string name="txtRecherche">Quel joueur Recherchez-vous ?</string>
+    <string name="txtEdtRecherche">Entrez un joueur</string>
+    <string name="txttitreDemande">titre demande</string>
+    <string name="nomBenjamin">nom benjamin</string>
+    <string name="prenomBenjamin">prenom benjamin</string>
+    <string name="posteBenjamin">poste du benjamin</string>
+    <string name="numeroBenjamin">numero du benji</string>
+    <string name="edt_Email">Email</string>
+    <string name="edt_pswd">Password</string>
+    <string name="btn_cnx">Connexion</string>
+    <string name="edt_Email_reg">Email</string>
+    <string name="edt_Pswd_reg">pwd</string>
+    <string name="btn_reg">Valider</string>
+    <string name="btn_inscription">Pas encore inscrit ? cliquez ici</string>
+</resources>

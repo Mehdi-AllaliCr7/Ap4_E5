@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Recherche">
+
+    <TextView
+        android:id="@+id/Recherche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="59dp"
+        android:text="@string/txtRecherche"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtRecherche"
+        android:layout_width="226dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="348dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/txtEdtRecherche"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnRecherche"
+        android:layout_width="71dp"
+        android:layout_height="48dp"
+        android:text="OK"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="338dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

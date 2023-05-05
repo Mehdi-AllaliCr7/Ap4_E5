@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dvd cat="fiction" titre="star Wars" realisateur="George" img ="starwars"/>
+    <dvd cat="fiction" titre="star Wars" realisateur="George" img ="starwars"/>
+    <dvd cat="fiction" titre="star Wars" realisateur="George" img ="starwars"/>
+    <dvd cat="fiction" titre="star Wars" realisateur="George" img ="starwars"/>
+
+</resources>

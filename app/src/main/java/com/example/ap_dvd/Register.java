@@ -42,6 +42,8 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         btn_Valider = (Button) findViewById(R.id.btn_register);
+        edt_Email_Register = (EditText) findViewById(R.id.edt_Email_Reg);
+        edt_Pswd_Register = (EditText) findViewById(R.id.edt_pwd_reg);
 
         btn_Valider.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,6 +66,16 @@ public class Register extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Log.i("Test ajout", response);
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(Register.this, response.toString(), Toast.LENGTH_SHORT).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            //Toast.makeText(Register.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 },
@@ -72,6 +84,7 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError erreur) {
 
+                        Toast.makeText(getApplicationContext(),erreur.getMessage(), Toast .LENGTH_LONG).show();
                     }
                 }){
             @Nullable
@@ -85,26 +98,15 @@ public class Register extends AppCompatActivity {
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this) ;
-
         requestQueue.add(stringrequest);
 
 
 
 
     }
-    public void onErrorResponse(VolleyError erreur){
-        Toast.makeText(getApplicationContext(),erreur.getMessage(), Toast .LENGTH_LONG).show();
-    }
 
-    public void onResponse(String response) {
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-            Log.i("Test ajout", response);
-            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+
+
 
 
 

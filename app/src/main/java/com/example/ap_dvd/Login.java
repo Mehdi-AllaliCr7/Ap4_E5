@@ -87,7 +87,7 @@ public class Login extends AppCompatActivity {
         final String pwd = edt_Pswd.getText().toString().trim();
 
         StringRequest stringrequest = new StringRequest(Request.Method.POST,
-                C.REGISTER_URL,
+                C.LOGIN_URL,
 
 
                 new Response.Listener<String>() {

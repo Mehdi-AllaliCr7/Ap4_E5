@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,7 +39,7 @@ public class U21 extends AppCompatActivity {
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest arrayRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                C.LISTE_TABLE_URL + "?idCat" + idCat,
+                C.LISTE_TABLE_URL + "?idCat=" + idCat,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -48,28 +50,34 @@ public class U21 extends AppCompatActivity {
                             while (count < data.length()) {
                                 JSONObject jsonObject = new JSONObject(data.getString(count));
                                 JoueurModele unU21 = new JoueurModele();
-                                unU21.setNomJoueur(jsonObject.getString("titrevideo"));
-                                unU21.setPrenomJoueur(jsonObject.getString("annee"));
-                                unU21.setPoste(jsonObject.getString("nonRealisateur"));
+                                unU21.setNomJoueur(jsonObject.getString("nomAdherent"));
+                                Log.i("nom",unU21.getNomJoueur());
+                                unU21.setPrenomJoueur(jsonObject.getString("prenomAdherent"));
+                                unU21.setPoste(jsonObject.getString("poste"));
 //Récupération de L'identifiont de L'image
-                                String imgName = jsonObject.getString("imgvideo");
+                               /* String imgName = jsonObject.getString("imgvideo");
                                 int resid = getResources().getIdentifier(imgName, "drawable", getPackageName());
-                                unU21.setImg(resid);
+                                unU21.setImg(resid);*/
                                 adapter.add(unU21);
                                 count++;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+
+                            Toast.makeText(U21.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                       Toast.makeText(U21.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                         error.getMessage();
                     }
                 });
-
+        requestQueue.add(arrayRequest);
+        listeU21.setAdapter(adapter);
 
                 Button btnRetourU21 = (Button) findViewById(R.id.btnRetourU21);
         //utilisation d'un Listener [interface de gestion d'événenents] pour récupérer L'interaction avec le bouton
@@ -91,8 +99,5 @@ public class U21 extends AppCompatActivity {
             }
         });//fin du bouton
     }
-    public class C{
-        private static final String ROOT_URL = "http://10.0.2.2/api_dvd/server";
-        public static final String LISTE_TABLE_URL = ROOT_URL+"/istByCategory.php";
-    }
+
 }

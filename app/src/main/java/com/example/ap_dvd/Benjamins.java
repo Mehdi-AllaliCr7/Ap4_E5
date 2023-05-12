@@ -12,9 +12,18 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ap_dvd.pickjoueur.JoueurAdapter;
 import com.example.ap_dvd.pickjoueur.JoueurModele;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 
 public class Benjamins extends AppCompatActivity {
@@ -45,33 +54,53 @@ public class Benjamins extends AppCompatActivity {
         });//fin du bouton
 
 
-        ListView ListeBenjamins = (ListView) findViewById(R.id. benjamins_listview);
-        JoueurAdapter adapterJoueur = new JoueurAdapter(this, R.layout. ligne);
+        int idCat = this.getIntent().getIntExtra("idCat", 0);
 
+        ListView liste_Benjamins = (ListView) findViewById(R.id.benjamins_listview);
+        JoueurAdapter adapter = new JoueurAdapter(this, R.layout.ligne);
 
-       try {
-            XmlPullParser xmlPullParser = getResources().getXml(R.xml.liste_benjamins);
+        final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest arrayRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                C.LISTE_TABLE_URL + "?idCat=" + idCat,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray data = response.getJSONArray("table");
+                            int count = 0;
+                            while (count < data.length()) {
+                                JSONObject jsonObject = new JSONObject(data.getString(count));
+                                JoueurModele unBenjamin = new JoueurModele();
+                                unBenjamin.setNomJoueur(jsonObject.getString("nomAdherent"));
+                                Log.i("nom",unBenjamin.getNomJoueur());
+                                unBenjamin.setPrenomJoueur(jsonObject.getString("prenomAdherent"));
+                                unBenjamin.setPoste(jsonObject.getString("poste"));
+//Récupération de L'identifiont de L'image
+                               /* String imgName = jsonObject.getString("imgvideo");
+                                int resid = getResources().getIdentifier(imgName, "drawable", getPackageName());
+                                unU21.setImg(resid);*/
+                                adapter.add(unBenjamin);
+                                count++;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
 
-           // while(xmlPullParser.getEventType() != XmlPullParser.END_DOCUMENT){
-                if(xmlPullParser.getEventType()== XmlPullParser.START_TAG){
-                    JoueurModele unBenjamin = new JoueurModele();
-                    unBenjamin.setNomJoueur(xmlPullParser.getAttributeValue(3));
-                    unBenjamin.setPrenomJoueur(xmlPullParser.getAttributeValue(0));
-                    unBenjamin.setAge(xmlPullParser.getAttributeValue(2));
-                    unBenjamin.setNumero(Integer.parseInt(xmlPullParser.getAttributeValue(2)));
-                    int resId = getResources().getIdentifier(xmlPullParser.getAttributeValue(1), "drawable", getPackageName());
-                    unBenjamin.setImg(resId);
+                            Toast.makeText(Benjamins.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                   adapterJoueur.add(unBenjamin);
-                }
-            //}
-            xmlPullParser.next();
-
-        }catch (Exception e){
-            Log.i("locDVD", "Erreurs trouvées" + e.getMessage());
-            e.printStackTrace();
-        }
-        ListeBenjamins.setAdapter(adapterJoueur);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Benjamins.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        error.getMessage();
+                    }
+                });
+        requestQueue.add(arrayRequest);
+        liste_Benjamins.setAdapter(adapter);
 
     }
 

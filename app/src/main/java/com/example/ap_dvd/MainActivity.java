@@ -109,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 //creation alertdialog
 
                         Intent intent = new Intent(MainActivity.this, U21.class) ;
+                        intent.putExtra("idCat", 4 );
+                        setResult(Activity.RESULT_OK,intent);
                         startActivity (intent);
+
 
             }
         });//fin du bouton
@@ -125,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 //creation alertdialog
                 Intent intent = new Intent(MainActivity.this, Seniors.class) ;
+                intent.putExtra("idCat", 3 );
+                setResult(Activity.RESULT_OK,intent);
                 startActivity (intent);
             }
         });//fin du bouton

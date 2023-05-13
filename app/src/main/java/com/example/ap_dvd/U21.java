@@ -35,6 +35,7 @@ public class U21 extends AppCompatActivity {
 
         ListView listeU21 = (ListView) findViewById(R.id.listeview_u21);
         JoueurAdapter adapter = new JoueurAdapter(this, R.layout.ligne);
+        Log.i("idCat", String.valueOf(4));
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest arrayRequest = new JsonObjectRequest(

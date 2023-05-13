@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 //Parametrage des bouton ok ou annuler
                 //alertDialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     //public void onClick(DialogInterface argo, int argi) {
-                        Intent intent = new Intent(MainActivity.this, Juniors.class) ;
+                        Intent intent = new Intent(MainActivity.this, Juniors.class);
+                    intent.putExtra("idCat", 1 );
+                    setResult(Activity.RESULT_OK,intent);
                         startActivity (intent);
 
                     //}
@@ -80,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
                         //Lance L'activité qui affiche la fenétre Policier
 
-                        Intent intent = new Intent(MainActivity.this, Benjamins.class) ;
+                        Intent intent = new Intent(MainActivity.this, Benjamins.class);
+                    intent.putExtra("idCat", 2 );
+                    setResult(Activity.RESULT_OK,intent);
                         startActivity (intent);
 
 
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 //creation alertdialog
 
                         Intent intent = new Intent(MainActivity.this, U21.class) ;
-                        intent.putExtra("idCat", 4 );
+                        intent.putExtra("idCat", 3 );
                         setResult(Activity.RESULT_OK,intent);
                         startActivity (intent);
 
@@ -128,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 //creation alertdialog
                 Intent intent = new Intent(MainActivity.this, Seniors.class) ;
-                intent.putExtra("idCat", 3 );
+                intent.putExtra("idCat", 4 );
                 setResult(Activity.RESULT_OK,intent);
                 startActivity (intent);
             }

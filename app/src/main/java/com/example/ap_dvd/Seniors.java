@@ -81,7 +81,7 @@ public class Seniors extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(data.getString(count));
                                 JoueurModele unSenior = new JoueurModele();
                                 unSenior.setNomJoueur(jsonObject.getString("nomAdherent"));
-                                Log.i("nom",unSenior.getNomJoueur());
+                                //Log.i("nom",unSenior.getNomJoueur());
                                 unSenior.setPrenomJoueur(jsonObject.getString("prenomAdherent"));
                                 unSenior.setPoste(jsonObject.getString("poste"));
 //Récupération de L'identifiont de L'image

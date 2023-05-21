@@ -57,7 +57,7 @@ public class Juniors extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(data.getString(count));
                                 JoueurModele unJunior = new JoueurModele();
                                 unJunior.setNomJoueur(jsonObject.getString("nomAdherent"));
-                                Log.i("nom",unJunior.getNomJoueur());
+                                //Log.i("nom",unJunior.getNomJoueur());
                                 unJunior.setPrenomJoueur(jsonObject.getString("prenomAdherent"));
                                 unJunior.setPoste(jsonObject.getString("poste"));
 //Récupération de L'identifiont de L'image

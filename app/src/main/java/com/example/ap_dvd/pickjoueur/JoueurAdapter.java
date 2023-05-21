@@ -13,26 +13,30 @@ import com.example.ap_dvd.R;
 public class JoueurAdapter extends ArrayAdapter {
 
 
-    public JoueurAdapter(Context context, int textViewRessourceId){super(context, textViewRessourceId);}
+    public JoueurAdapter(Context context, int textViewRessourceId){
+        super(context, textViewRessourceId);
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         View Result = convertView;
         if(convertView == null) {
             Result = LayoutInflater.from(getContext()).inflate(R.layout.ligne, parent, false);
-        }JoueurModele joueur = (JoueurModele) getItem(position);
+        }
+        JoueurModele joueur = (JoueurModele) getItem(position);
 
         TextView nom = (TextView) Result.findViewById(R.id.nom);
         nom.setText(joueur.getNomJoueur());
 
         TextView prenom = (TextView) Result.findViewById(R.id.prenom);
-        nom.setText(joueur.getPrenomJoueur());
+        prenom.setText(joueur.getPrenomJoueur());
 
         TextView poste = (TextView) Result.findViewById(R.id.poste);
-        nom.setText(joueur.getPoste());
+        poste.setText(joueur.getPoste());
 
-        TextView numero = (TextView) Result.findViewById(R.id.numero);
-        nom.setText(joueur.getNumero());
+       // TextView numero = (TextView) Result.findViewById(R.id.numero);
+        //numero.setText(joueur.getNumero());
 
         ImageView img = (ImageView) Result.findViewById(R.id.ligne_img);
         img.setImageResource(joueur.getImg());

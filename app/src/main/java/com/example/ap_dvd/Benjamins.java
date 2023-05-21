@@ -24,6 +24,7 @@ import com.example.ap_dvd.pickjoueur.JoueurModele;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.example.ap_dvd.C;
 import org.xmlpull.v1.XmlPullParser;
 
 public class Benjamins extends AppCompatActivity {
@@ -77,6 +78,7 @@ public class Benjamins extends AppCompatActivity {
                                 Log.i("nom",unBenjamin.getNomJoueur());
                                 unBenjamin.setPrenomJoueur(jsonObject.getString("prenomAdherent"));
                                 unBenjamin.setPoste(jsonObject.getString("poste"));
+                                unBenjamin.setAge(jsonObject.getString("Age"));
 //Récupération de L'identifiont de L'image
                                /* String imgName = jsonObject.getString("imgvideo");
                                 int resid = getResources().getIdentifier(imgName, "drawable", getPackageName());
@@ -95,8 +97,8 @@ public class Benjamins extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Benjamins.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                        error.getMessage();
+                        //Toast.makeText(Benjamins.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //error.getMessage();
                     }
                 });
         requestQueue.add(arrayRequest);
